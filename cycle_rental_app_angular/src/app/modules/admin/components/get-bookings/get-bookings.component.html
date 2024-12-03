@@ -1,0 +1,45 @@
+<div style="background-color: #000; color: #fff; min-height: 100vh; padding: 20px;">
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working..." style="color: #fff;">
+      <nz-table #basicTable [nzData]="bookings" [nzPageSize]="20" [nzShowPagination]="false" style="width: 100%; background-color: #000; color: #fff;">
+          <thead>
+              <tr style="background-color: #000;">
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">Username</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">Email</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">From</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">To</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">Days</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">Price</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">Status</th>
+                  <th style="font-weight: bolder; color: #fff; background-color: #000; text-align: left;">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let booking of basicTable.data" [ngStyle]="{ 'background-color': booking.hover ? '#000' : '#1c1c1c', 'color': booking.hover ? '#000' : '#fff' }"
+                  (mouseenter)="booking.hover = true" (mouseleave)="booking.hover = false">
+                  <td>{{ booking.username }}</td>
+                  <td>{{ booking.email }}</td>
+                  <td>{{ booking.fromDate | date: 'MMM d, y' }}</td>
+                  <td>{{ booking.toDate | date: 'MMM d, y' }}</td>
+                  <td>{{ booking.days }}</td>
+                  <td>{{ booking.price }}</td>
+                  <td>
+                      <strong [ngStyle]="{
+                          'color': booking.hover ? 'black' : 
+                          (booking.bookCycleStatus === 'APPROVED' ? 'green' :
+                           booking.bookCycleStatus === 'REJECTED' ? 'red' :
+                           'orange')
+                      }">
+                          {{ booking.bookCycleStatus }}
+                      </strong>
+                  </td>
+                  <td>
+                      <span *ngIf="booking.bookCycleStatus === 'PENDING'">
+                          <button style="margin-left: 10px; background-color: #007bff; color: #fff; border: 1px solid #007bff;" nzSize="small" nz-button nzType="primary" (click)="changeBookingStatus(booking.id, 'Approve')">Approve</button>
+                          <button style="margin-left: 10px; background-color: #ff4d4f; color: #fff; border: 1px solid #ff4d4f;" nzSize="small" nz-button nzType="primary" (click)="changeBookingStatus(booking.id, 'Reject')" nzDanger>Reject</button>
+                      </span>
+                  </td>
+              </tr>
+          </tbody>
+      </nz-table>
+  </nz-spin>
+</div>

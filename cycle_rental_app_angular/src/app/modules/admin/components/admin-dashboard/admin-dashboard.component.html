@@ -1,0 +1,26 @@
+<div style="background-color: #000; min-height: 100vh; padding-top: 10px;">
+    <div class="container">
+        <div class="child" *ngFor="let cycle of cycles">
+            <div nz-row>
+                <div nz-col nzSpan="8">
+                    <img class="profile" [src]="cycle.processedImg" alt="profile" />
+                </div>
+                <div nz-col nzSpan="16">
+                    <h2 style="cursor: pointer; color: #108ee9;">
+                        {{cycle.brand}} {{cycle.name}}
+                    </h2>
+                    <p>{{cycle.description}}</p>
+                    <hr>
+                    <h5>Price: <b>${{cycle.price}}</b> - Color: <b>{{cycle.color}}</b> - Transmission: <b>{{cycle.transmission}}</b> - Type: <b>{{cycle.type}}</b> - Year: <b>{{cycle.year | date: 'yyyy'}}</b></h5>
+                    <hr>
+                    <div style="float: right;">
+                        <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary" 
+                        routerLink ="/admin/cycle/{{cycle.id}}">Update</button>
+                        <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary" 
+                        (click)="deleteCycle(cycle.id)" nzDanger>Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

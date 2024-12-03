@@ -1,0 +1,165 @@
+<div style="background-color: #2f2f2f; min-height: 100vh; padding: 20px;">
+  <div class="inner-content">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+      <div class="dashboard-filter">
+        <div
+          class="filter-grid"
+          style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;"
+          [formGroup]="searchCycleForm"
+        >
+          <!-- Brand Dropdown -->
+          <nz-form-control nzErrorTip="Brand is required!">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a Brand"
+              formControlName="brand"
+              aria-label="Select a Brand"
+              style="min-width: 180px;"
+            >
+              <nz-option
+                *ngFor="let brand of listOfBrands"
+                [nzLabel]="brand"
+                [nzValue]="brand"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+
+          <!-- Type Dropdown -->
+          <nz-form-control nzErrorTip="Type is required!">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a Type"
+              formControlName="type"
+              aria-label="Select a Type"
+              style="min-width: 180px;"
+            >
+              <nz-option
+                *ngFor="let type of listOfType"
+                [nzLabel]="type"
+                [nzValue]="type"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+
+          <!-- Color Dropdown -->
+          <nz-form-control nzErrorTip="Color is required!">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a Color"
+              formControlName="color"
+              aria-label="Select a Color"
+              style="min-width: 180px;"
+            >
+              <nz-option
+                *ngFor="let color of listOfColor"
+                [nzLabel]="color"
+                [nzValue]="color"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+
+          <!-- Transmission Dropdown -->
+          <nz-form-control nzErrorTip="Transmission is required!">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="Select a Transmission"
+              formControlName="transmission"
+              aria-label="Select a Transmission"
+              style="min-width: 180px;"
+            >
+              <nz-option
+                *ngFor="let transmission of listOfTransmission"
+                [nzLabel]="transmission"
+                [nzValue]="transmission"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+
+          <!-- Search Cycles Button -->
+          <button
+  class="filterBtn"
+  nz-button
+  nzType="primary"
+  (click)="searchCycle()"
+  style="
+    min-width: 150px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+    transition: background-color 0.3s, color 0.3s, border 0.3s;
+  "
+  onmouseover="
+    this.style.backgroundColor='transparent'; 
+    this.style.color='#007bff'; 
+    this.style.border='2px solid #007bff'
+  "
+  onmouseout="
+    this.style.backgroundColor='#007bff'; 
+    this.style.color='white'; 
+    this.style.border='2px solid #007bff'
+  "
+>
+  Search Cycles
+</button>
+
+        </div>
+      </div>
+    </nz-spin>
+  </div>
+
+  <!-- Cycle List -->
+  <div style="background-color: #2f2f2f; padding-top: 20px;">
+    <div style="padding: 20px;">
+      <div
+        class="card"
+        style="
+          background-color: #3f3f3f;
+          border-radius: 10px;
+          padding: 20px;
+          margin-bottom: 20px;
+          transition: transform 0.3s, box-shadow 0.3s;
+          display: flex;
+          align-items: center;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        "
+        *ngFor="let cycle of cycles"
+        onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0px 6px 12px rgba(0, 0, 0, 0.3)'"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0px 4px 6px rgba(0, 0, 0, 0.1)'"
+      >
+        <!-- Image -->
+        <div style="flex: 1; text-align: center;">
+          <img
+            style="
+              height: 130px;
+              width: 220px;
+              object-fit: cover;
+              border-radius: 10px;
+            "
+            [src]="cycle.processedImg"
+            alt="Cycle Image"
+          />
+        </div>
+
+        <!-- Cycle Details -->
+<div style="flex: 2; margin-left: 20px; color: white;">
+  <h2 style="color: #108ee9; margin: 0;">{{ cycle.brand }} - {{ cycle.name }}</h2>
+  <p style="font-size: 14px; margin: 10px 0;">{{ cycle.description }}</p>
+  <hr style="border-color: #4f4f4f;" />
+  <h5 style="color: white;"> <!-- Explicitly set text color to white -->
+    Price: <b>${{ cycle.price }}</b> <br />
+    Color: <b>{{ cycle.color }}</b> <br />
+    Transmission: <b>{{ cycle.transmission }}</b> <br />
+    Type: <b>{{ cycle.type }}</b> <br />
+    Year: <b>{{ cycle.year | date: 'yyyy' }}</b>
+  </h5>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>

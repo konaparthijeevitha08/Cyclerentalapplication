@@ -1,0 +1,99 @@
+/* General Background */
+body, html {
+  background-color: #000;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Container for grid layout */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 20px;
+  padding: 20px;
+  max-width: 90vw; /* Ensures container stays within viewport */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Card Styling */
+.child {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: #1c1c1c;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px 3px #007bff;
+  }
+}
+
+/* Image Container */
+.child img.profile {
+  width: 100%;
+  max-height: 150px;
+  border-radius: 10px;
+  object-fit: contain; /* Ensures the entire image fits within its container */
+  border: 1px solid #333;
+  margin-bottom: 10px;
+}
+
+/* Content Container */
+.child .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #e0e0e0;
+  width: 100%;
+  flex-grow: 1;
+}
+
+/* Cycle Title */
+.child h2 {
+  color: #e0e0e0;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Details List */
+.child p, .child h5 {
+  color: #b0b0b0;
+  margin: 5px 0;
+  font-size: 0.9em;
+  line-height: 1.3;
+}
+
+/* Book Button Styling */
+.child button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-size: 0.8em;
+  cursor: pointer;
+  align-self: center; /* Center-aligns the button within the card */
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  
+  &:hover {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+}
+
+/* Divider Line */
+.child hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 8px 0;
+}

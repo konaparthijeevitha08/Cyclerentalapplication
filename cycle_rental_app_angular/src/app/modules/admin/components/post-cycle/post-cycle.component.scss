@@ -1,0 +1,169 @@
+/* Parent and Child Layout */
+.parent {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black; /* Black to Blue gradient */
+}
+
+.child {
+  padding: 50px;
+  width: 100%;
+  max-width: 680px;
+  background-color: #292929; /* Black content background */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: #fff; /* White text for content */
+}
+
+/* Image and Profile Badge */
+.imgDiv {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 5px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #007bff; /* Blue border for profile image */
+}
+
+/* Upload Icon */
+.upload-label {
+  cursor: pointer;
+  color: #fff; /* White text for the label */
+}
+
+.upload-icon {
+  width: 70px;
+  height: 35px;
+  margin-top: 10px;
+}
+
+/* Button Styles */
+button {
+  background-color: #007bff; /* Blue button background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+button:disabled {
+  background-color: #444; /* Dark gray for disabled buttons */
+  cursor: not-allowed;
+}
+
+/* Login Button */
+.login-form-button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #007bff; /* Blue button */
+  color: white;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.login-form-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Arial', sans-serif;
+  color: #fff; /* White headings */
+  margin-bottom: 10px;
+}
+
+p,
+label {
+  font-family: 'Arial', sans-serif;
+  color: #aaa; /* Light gray text */
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: #007bff; /* Blue tooltip background */
+  color: #fff; /* White text */
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .child {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .profile {
+    height: 120px;
+    width: 120px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile {
+    height: 100px;
+    width: 100px;
+  }
+
+  .upload-icon {
+    width: 50px;
+    height: 25px;
+  }
+}

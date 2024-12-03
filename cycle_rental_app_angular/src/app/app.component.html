@@ -1,0 +1,48 @@
+<!-- NG-ZORRO -->
+<!-- <a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
+  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
+</a> -->
+<div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+        <div class="navbar-title">
+            <a routerLink="/login">Cycle Rental Service</a>
+        </div>
+        <div class="nav-links">
+            <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+            <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
+        </div>
+    </nz-header>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+        <div class="navbar-title">
+            <a routerLink="/login">Admin</a>
+        </div>
+        <div class="nav-links">
+            <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+            <a nz-button nzType="link" routerLink="/admin/cycle" routerLinkActive="active">Post Cycle</a>
+            <a nz-button nzType="link"routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
+            <a nz-button nzType="link"routerLink="/admin/search" routerLinkActive="active">Search</a>
+            <a nz-button nzType="link" (click) = "logout()"  routerLinkActive="active">Logout</a>
+        </div>
+    </nz-header>
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+    <nz-header class="main-header" nz-row nzType="flex" class="custom-navbar">
+        <div class="navbar-title">
+            <a routerLink="/login">LoggedIn Customer</a>
+        </div>
+        <div class="nav-links">
+
+            <a nz-button nzType="link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+            <a nz-button nzType="link" routerLink="/customer/my_bookings" routerLinkActive="active">My Bookings</a>
+            <a nz-button nzType="link" routerLink="/customer/cycle/search" routerLinkActive="active">Search Cycle</a>
+            <a nz-button nzType="link" (click) = "logout()" routerLinkActive="active">Logout</a>
+
+        </div>
+    </nz-header>
+</div>
+
+<router-outlet></router-outlet>

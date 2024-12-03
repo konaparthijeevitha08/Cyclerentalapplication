@@ -1,0 +1,56 @@
+<div class="page-container">
+    <div class="card-container">
+      <div class="image-container">
+        <img class="profile" [src]="processedImage" alt="profile" />
+      </div>
+  
+      <div class="cycle-info">
+        <h2 class="cycle-title">
+          {{cycle.brand}} {{cycle.name}}
+        </h2>
+        <p>{{cycle.description}}</p>
+        <hr />
+        <h5 class="cycle-details">
+          Price: <b>${{cycle.price}}</b> - Color: <b>{{cycle.color}}</b> -
+          Transmission: <b>{{cycle.transmission}}</b> - Type:
+          <b>{{cycle.type}}</b> - Year:
+          <b>{{cycle.year | date: 'yyyy'}}</b>
+        </h5>
+      </div>
+  
+      <hr />
+  
+      <div class="dashboard-filter">
+        <form [formGroup]="validateForm">
+          <div class="filter-row">
+            <nz-form-item class="filter-select">
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="fromDate"
+                  nzPlaceHolder="From Date"
+                  [nzFormat]="dateFormat"
+                  id="From Date">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+  
+            <nz-form-item class="filter-select">
+              <nz-form-control>
+                <nz-date-picker
+                  formControlName="toDate"
+                  nzPlaceHolder="To Date"
+                  [nzFormat]="dateFormat"
+                  id="To Date">
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+  
+          <div class="filter-btn-container">
+            <button nz-button nzType="primary" (click)="bookACycle(validateForm.value)">Book Cycle</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

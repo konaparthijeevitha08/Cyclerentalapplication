@@ -1,0 +1,99 @@
+/* General Background */
+body, html {
+  background-color: #000;
+  color: #fff;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* Grid Container */
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+  gap: 20px;
+  padding: 20px;
+  max-width: 90vw; /* Ensures the container stays within viewport */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Card Styling */
+.child {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #1c1c1c; /* Dark background for cards */
+  color: #e0e0e0; /* Light text color */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px 3px #007bff;
+  }
+}
+
+/* Image Styling */
+.child img.profile {
+  width: 100%; /* Full width within container */
+  height: auto; /* Auto height to maintain aspect ratio */
+  max-height: 150px; /* Limits the height so it doesn't exceed the card size */
+  border-radius: 10px;
+  object-fit: contain; /* Ensures the full image is displayed without cropping */
+  border: 1px solid #333;
+  margin-bottom: 10px;
+}
+
+/* Content Styling */
+.child h2 {
+  color: #108ee9;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.child p, .child h5 {
+  color: #b0b0b0;
+  margin: 5px 0;
+}
+
+/* Button Styling */
+.child button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+
+  &:hover {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+}
+
+.child button[nzDanger] {
+  background-color: #ff4d4f;
+  border: 1px solid #ff4d4f;
+
+  &:hover {
+    background-color: transparent;
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f;
+  }
+}
+
+/* Divider Line */
+.child hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 10px 0;
+}
